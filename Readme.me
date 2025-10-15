@@ -1,0 +1,148 @@
+# 🧬 Proyecto: Simulador de Algoritmo Genético - Optimización de Área
+
+🧑‍💻 Autores
+
+Hernan Yessid Murcia Salinas
+Estudiante Ingeniería de Sistemas y Computación – Universidad de Cundinamarca
+
+Ing. John Monzaide Alvarez Cely
+Docente – Universidad de Cundinamarca
+
+---
+
+## 📘 Descripción general
+
+Este proyecto implementa un **Algoritmo Genético (GA)** para optimizar el uso de un área máxima de **50 m²**, seleccionando artículos con diferente beneficio y tamaño, buscando **maximizar el beneficio total** sin sobrepasar el área disponible.
+
+El sistema incluye:
+
+- **Backend (Flask + Python):**
+  - Ejecuta el algoritmo genético.
+  - Recibe parámetros configurables desde el frontend.
+  - Devuelve la mejor solución, evolución del fitness y la distribución espacial 2D.
+
+- **Frontend (React + Vite + Tailwind):**
+  - Permite editar el catálogo de artículos.
+  - Configura los parámetros del GA.
+  - Visualiza el plano 2D, la gráfica de convergencia y los resultados numéricos.
+  - Permite descargar los resultados en formato JSON.
+
+---
+
+## ⚙️ Requisitos previos
+
+Antes de comenzar, asegúrate de tener instalado:
+
+- [Python 3.10 o superior](https://www.python.org/downloads/)
+- [Node.js 18 o superior](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+- Un editor de código como [Visual Studio Code](https://code.visualstudio.com/)
+
+---
+
+## 🧩 Estructura del proyecto
+
+AlgoritmosGeneticos/
+│
+├── backend/
+│ ├── main.py
+│ └── requirements.txt
+│
+├── frontend/
+│ ├── package.json
+│ ├── postcss.config.js
+│ ├── tailwind.config.js
+│ ├── index.html
+│ ├── src/
+│ │ └── App.jsx
+│
+└── README.md
+
+
+---
+
+## 🚀 Instalación y ejecución local
+
+### 🧠 1. Backend (Flask)
+
+1. Abre una terminal en la carpeta del proyecto:
+
+   cd backend
+
+2. (Opcional) Crea y activa un entorno virtual:
+
+python -m venv venv
+venv\Scripts\activate     # En Windows
+source venv/bin/activate  # En Linux/Mac
+
+3. Instala las dependencias necesarias:
+
+pip install -r requirements.txt
+
+4. Ejecuta el servidor Flask:
+
+python main.py
+
+
+
+
+💻 2. Frontend (React + Vite)
+
+En una nueva terminal, ve a la carpeta frontend:
+
+cd frontend
+
+
+Instala las dependencias necesarias:
+
+npm install
+
+
+Si aparece un error con TailwindCSS, puedes instalarlo manualmente:
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+
+Inicia el servidor de desarrollo:
+
+npm run dev
+
+
+Abre el enlace que te muestra la consola, por defecto:
+
+http://localhost:5173/
+
+
+
+
+
+📊 Resultados mostrados
+
+El frontend presenta:
+
+Plano 2D dinámico → Visualización del área ocupada (cada celda representa 0.01 m²).
+
+Leyenda de colores → Cada artículo con su color, cantidad, área individual y total.
+
+Gráfica de convergencia → Evolución del mejor fitness por generación.
+
+Resultados numéricos → Beneficio total, área utilizada y porcentaje de uso.
+
+Descarga JSON → Permite guardar el archivo resultados_ejemplo.json con todos los datos.
+
+🧠 Funcionamiento del Algoritmo Genético
+
+Inicialización: Se generan individuos aleatorios respetando el stock.
+
+Evaluación: Se calcula el beneficio penalizando exceso de área.
+
+Selección: Torneo o ruleta, según configuración.
+
+Cruce y mutación: Se combinan y alteran individuos para generar diversidad.
+
+Elitismo: Se conservan los mejores individuos.
+
+Evolución: Repite hasta completar el número de generaciones.
+
+Resultado: Se devuelve el mejor individuo con su distribución espacial.
