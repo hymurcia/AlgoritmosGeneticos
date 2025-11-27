@@ -42,13 +42,13 @@ const [params, setParams] = useState({
   seed: 42,
   selection_type: "torneo", // 🟢 nuevo campo
 });
-const API_BASE_URL = "https://hymurcia-algoritmos-api.onrender.com";
+const API_BASE_URL = "https://algoritmosgeneticos.onrender.com"; 
 
 const run = async () => {
     setRunning(true);
     setResult(null);
     try {
-        const res = await fetch(`${API_BASE_URL}/run`, { 
+        const res = await fetch(`${API_BASE_URL}/run`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ ...params, catalogo }),
