@@ -42,26 +42,27 @@ const [params, setParams] = useState({
   seed: 42,
   selection_type: "torneo", // 🟢 nuevo campo
 });
+const API_BASE_URL = "https://hymurcia-algoritmos-api.onrender.com";
 
-
-  const run = async () => {
+const run = async () => {
     setRunning(true);
     setResult(null);
     try {
-      const res = await fetch("http://localhost:5000/run", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...params, catalogo }),
-      });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      setResult(data);
+        const res = await fetch(`${API_BASE_URL}/run`, { 
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ...params, catalogo }),
+        });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        setResult(data);
     } catch (err) {
-      alert("No se pudo conectar con el backend.\nError: " + err.message);
+        // Mensaje de error ajustado para indicar la nueva URL
+        alert(`No se pudo conectar con el backend en ${API_BASE_URL}.\nError: ${err.message}`);
     } finally {
-      setRunning(false);
+        setRunning(false);
     }
-  };
+};
 
   const downloadJSON = () => {
     if (!result) return;
